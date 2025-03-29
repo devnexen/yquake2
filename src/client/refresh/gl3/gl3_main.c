@@ -379,10 +379,14 @@ SetMode_impl(int *pwidth, int *pheight, int mode, int fullscreen)
 
 	R_Printf(PRINT_ALL, " %dx%d (vid_fullscreen %i)\n", *pwidth, *pheight, fullscreen);
 
-
 	if (!ri.GLimp_InitGraphics(fullscreen, pwidth, pheight))
 	{
 		return rserr_invalid_mode;
+	}
+
+	if (mode == -2 || fullscreen)
+	{
+		GL3_BindVBO(0);
 	}
 
 	/* This is totaly obscure: For some strange reasons the renderer
@@ -684,6 +688,7 @@ GL3_Shutdown(void)
 		GL3_SurfShutdown();
 		GL3_Draw_ShutdownLocal();
 		GL3_ShutdownShaders();
+		GL3_ShutdownLibrary();
 
 		// free the postprocessing FBO and its renderbuffer and texture
 		if(gl3state.ppFBrbo != 0)

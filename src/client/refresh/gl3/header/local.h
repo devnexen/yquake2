@@ -390,6 +390,7 @@ extern void GL3_RotateForEntity(entity_t *e);
 extern int GL3_InitContext(void* win);
 extern void GL3_GetDrawableSize(int* width, int* height);
 extern int GL3_PrepareForWindow(void);
+extern void GL3_ShutdownLibrary(void);
 extern qboolean GL3_IsVsyncActive(void);
 extern void GL3_EndFrame(void);
 extern void GL3_SetVsync(void);

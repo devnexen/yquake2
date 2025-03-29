@@ -327,6 +327,11 @@ int GL3_PrepareForWindow(void)
 	return SDL_WINDOW_OPENGL;
 }
 
+void GL3_ShutdownLibrary(void)
+{
+	SDL_GL_UnloadLibrary();
+}
+
 /*
  * Initializes the OpenGL context. Returns true at
  * success and false at failure.
